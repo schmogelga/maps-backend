@@ -40,7 +40,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(requests -> {
                 requests.requestMatchers(HttpMethod.POST, "login", "register").permitAll();
                 requests.requestMatchers(HttpMethod.GET, "swagger-ui.html", "swagger-resources", "/v3/api-docs/**", "swagger-ui/**").permitAll();
-                requests.anyRequest().authenticated();
+                requests.anyRequest().hasAuthority("USER");
             });
 
         return http.build();
