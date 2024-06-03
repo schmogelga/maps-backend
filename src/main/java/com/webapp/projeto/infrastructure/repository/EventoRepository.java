@@ -1,11 +1,11 @@
 package com.webapp.projeto.infrastructure.repository;
 
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.webapp.projeto.domain.model.UserInfo;
+import com.webapp.projeto.domain.model.Evento;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserInfo, Long> {
-    public UserInfo findByUsername(String username);
-}
+public interface EventoRepository extends JpaRepository<Evento, UUID> {}

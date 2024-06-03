@@ -1,12 +1,12 @@
 package com.webapp.projeto.domain.model;
 
+import java.util.UUID;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.util.UUID;
 
 @Entity
 @Data

@@ -1,4 +1,4 @@
-package com.webapp.projeto.application.dto;
+package com.webapp.projeto.application.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

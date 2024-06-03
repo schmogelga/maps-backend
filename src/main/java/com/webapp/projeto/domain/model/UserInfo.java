@@ -1,15 +1,15 @@
 package com.webapp.projeto.domain.model;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -28,10 +28,8 @@ public class UserInfo {
     private String email;
     private String nome;
 
-    @JsonIgnore
-    private String password;
+    @JsonIgnore private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<UserRole> roles = new HashSet<>();
-
 }

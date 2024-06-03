@@ -1,14 +1,15 @@
 package com.webapp.projeto.application.security;
 
-import com.webapp.projeto.domain.model.UserInfo;
-import com.webapp.projeto.domain.model.UserRole;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import com.webapp.projeto.domain.model.UserInfo;
+import com.webapp.projeto.domain.model.UserRole;
 
 public class CustomUserDetails extends UserInfo implements UserDetails {
 
@@ -18,10 +19,10 @@ public class CustomUserDetails extends UserInfo implements UserDetails {
 
     public CustomUserDetails(UserInfo byUsername) {
         this.username = byUsername.getUsername();
-        this.password= byUsername.getPassword();
+        this.password = byUsername.getPassword();
         List<GrantedAuthority> auths = new ArrayList<>();
 
-        for(UserRole role : byUsername.getRoles()){
+        for (UserRole role : byUsername.getRoles()) {
 
             auths.add(new SimpleGrantedAuthority(role.getName().toUpperCase()));
         }

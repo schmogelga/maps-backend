@@ -1,4 +1,4 @@
-package com.webapp.projeto.application.dto;
+package com.webapp.projeto.application.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,5 +11,4 @@ import lombok.NoArgsConstructor;
 @Builder
 public class JwtResponseDTO {
     private String accessToken;
-
 }
