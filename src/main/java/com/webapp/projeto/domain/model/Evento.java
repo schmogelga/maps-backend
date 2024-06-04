@@ -3,6 +3,8 @@ package com.webapp.projeto.domain.model;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import com.webapp.projeto.domain.enumeration.StatusEvento;
@@ -25,9 +27,12 @@ public class Evento {
     private Long latitude;
     private Long longitude;
 
-    @Column(name = "registro", columnDefinition = "TIMESTAMP")
+    @Column(name = "registro", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)
     private LocalDateTime registro;
 
     @Enumerated(EnumType.STRING)
     private StatusEvento status;
+
+    @OneToMany(mappedBy = "evento")
+    private List<Denuncia> denuncias = new ArrayList<>();
 }

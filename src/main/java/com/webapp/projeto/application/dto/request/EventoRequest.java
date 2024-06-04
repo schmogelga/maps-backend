@@ -4,5 +4,5 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record EventoRequest(
-        String descricao, Long latitude, Long longitude, LocalDateTime registro, String status) {
+        String descricao, Long latitude, Long longitude, String status) {
 }

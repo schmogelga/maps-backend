@@ -2,7 +2,7 @@ package com.webapp.projeto.application.web;
 
 import com.webapp.projeto.application.dto.request.EventoRequest;
 import com.webapp.projeto.application.dto.response.EventoResponse;
-import com.webapp.projeto.domain.model.UserInfo;
+import com.webapp.projeto.domain.enumeration.StatusEvento;
 import com.webapp.projeto.domain.service.EventoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +17,16 @@ public class EventosController implements EventosApi{
 
     @Override
     public EventoResponse recuperarEvento(UUID id) {
-        return eventoService.recuperarEvento(id);
+        return eventoService.recuperarEventoResponse(id);
     }
 
     @Override
     public EventoResponse criarEvento(EventoRequest eventoRequest) {
         return eventoService.criarEvento(eventoRequest);
+    }
+
+    @Override
+    public void atualizarStatus(UUID id, StatusEvento status) {
+        eventoService.atualizarEvento(id, status);
     }
 }

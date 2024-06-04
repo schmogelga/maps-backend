@@ -1,5 +1,6 @@
 package com.webapp.projeto.domain.service;
 
+import com.webapp.projeto.application.security.ContextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,4 +32,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         logger.info("User Authenticated Successfully..!!!");
         return new CustomUserDetails(user);
     }
+
+    public UserInfo recuperarUsuarioLogado(){
+        return userRepository.findByUsername(ContextUtil.getCurrentUser().getUsername());
+    }
+
 }
