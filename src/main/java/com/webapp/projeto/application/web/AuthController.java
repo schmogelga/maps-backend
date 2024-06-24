@@ -43,8 +43,13 @@ public class AuthController implements AuthApi {
         Authentication authentication =
                 authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(username, password));
+
+        UserInfo user = userRepository.findByUsername(username);
         if (authentication.isAuthenticated()) {
-            return JwtResponseDTO.builder().accessToken(jwtService.GenerateToken(username)).build();
+            return JwtResponseDTO.builder()
+                    .accessToken(jwtService.GenerateToken(username))
+                    .userRoles(user.getUserRolesString())
+                    .build();
         } else {
             throw new UsernameNotFoundException("invalid user request..!!");
         }

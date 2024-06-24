@@ -3,6 +3,7 @@ package com.webapp.projeto.domain.model;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -28,8 +29,16 @@ public class UserInfo {
     private String email;
     private String nome;
 
-    @JsonIgnore private String password;
+    @JsonIgnore
+    private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     private Set<UserRole> roles = new HashSet<>();
+
+    @Transient
+    public String getUserRolesString() {
+        return roles.stream()
+                .map(UserRole::getName)
+                .collect(Collectors.joining(";"));
+    }
 }
