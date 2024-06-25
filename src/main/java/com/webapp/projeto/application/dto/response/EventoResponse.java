@@ -9,4 +9,4 @@ import java.util.UUID;
 
 @Builder
 public record EventoResponse(
-        UUID id, String descricao, Long latitude, Long longitude, LocalDateTime registro, String status) {}
+        UUID id, String descricao, Double latitude, Double longitude, LocalDateTime registro, String status) {}

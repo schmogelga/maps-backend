@@ -7,6 +7,7 @@ import com.webapp.projeto.domain.service.EventoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -18,6 +19,11 @@ public class EventosController implements EventosApi{
     @Override
     public EventoResponse recuperarEvento(UUID id) {
         return eventoService.recuperarEventoResponse(id);
+    }
+
+    @Override
+    public List<EventoResponse> recuperarEventos() {
+        return eventoService.recuperarEventos();
     }
 
     @Override

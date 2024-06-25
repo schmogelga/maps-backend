@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import com.webapp.projeto.domain.enumeration.StatusEvento;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,8 +25,8 @@ public class Evento {
     private UUID id;
 
     private String descricao;
-    private Long latitude;
-    private Long longitude;
+    private Double latitude;
+    private Double longitude;
 
     @Column(name = "registro", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)
     private LocalDateTime registro;

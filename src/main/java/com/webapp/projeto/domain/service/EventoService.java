@@ -1,5 +1,7 @@
 package com.webapp.projeto.domain.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import com.webapp.projeto.application.dto.request.EventoRequest;
@@ -27,7 +29,11 @@ public class EventoService {
     }
 
     public EventoResponse criarEvento(EventoRequest eventoRequest){
-        final var evento = eventoMapper.paraEvento(eventoRequest);
+        final var evento = new Evento();
+        evento.setRegistro(LocalDateTime.now());
+        evento.setLatitude(eventoRequest.latitude());
+        evento.setLongitude(eventoRequest.longitude());
+        evento.setDescricao(eventoRequest.descricao());
 
         return eventoMapper.paraEventoResponse(eventoRepository.save(evento));
     }
@@ -45,6 +51,10 @@ public class EventoService {
                         () ->
                                 new NotFoundException(
                                         String.format("Evento não encontrado para o id %s", eventoId)));
+    }
+
+    public List<EventoResponse> recuperarEventos(){
+        return eventoMapper.paraEventoResponse(eventoRepository.findAll());
     }
 
 }
