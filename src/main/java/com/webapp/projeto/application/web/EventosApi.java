@@ -2,6 +2,7 @@ package com.webapp.projeto.application.web;
 
 import com.webapp.projeto.application.dto.request.EventoRequest;
 import com.webapp.projeto.application.dto.request.RegisterRequestDTO;
+import com.webapp.projeto.application.dto.request.StatusDTO;
 import com.webapp.projeto.application.dto.response.EventoResponse;
 import com.webapp.projeto.domain.enumeration.StatusEvento;
 import com.webapp.projeto.domain.model.UserInfo;
@@ -23,7 +24,7 @@ public interface EventosApi {
 
     @Operation(summary = "Recupera todos os eventos", description = "Recupera todos os eventos", method = "GET")
     @GetMapping
-    List<EventoResponse> recuperarEventos();
+    List<EventoResponse> recuperarEventos(@RequestParam StatusEvento status);
 
     @Operation(summary = "Cria um evento", description = "Cria um evento", method = "POST")
     @PostMapping()
@@ -31,6 +32,6 @@ public interface EventosApi {
 
     @Operation(summary = "Atualiza um evento", description = "Atualiza um evento", method = "POST")
     @PatchMapping("/{id}")
-    void atualizarStatus(@PathVariable UUID id,  @RequestParam StatusEvento status);
+    void atualizarStatus(@PathVariable UUID id,  @RequestBody StatusDTO status);
 
 }
